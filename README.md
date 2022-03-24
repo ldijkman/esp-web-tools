@@ -1,3 +1,10 @@
+---
+
+# testing inbrowser programming esp8266 with Electra
+# https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+
+---
+
 # ESP Web Tools
 
 Allow flashing ESPHome or other ESP-based firmwares via the browser. Will automatically detect the board type and select a supported firmware.
