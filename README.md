@@ -1,7 +1,7 @@
 ---
 
-# testing inbrowser programming esp8266 with Electra
-# https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+## testing inbrowser programming esp8266 with Electra
+## https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
 ---
 
