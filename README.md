@@ -3,6 +3,13 @@
 ## testing inbrowser programming esp8266 with Electra
 ## https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg" width="50%">
+
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg" width="50%">
+
+- https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
 ---
 
 # ESP Web Tools
