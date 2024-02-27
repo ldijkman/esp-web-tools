@@ -1,4 +1,6 @@
-import { FlashState } from "./const";
+import type { FlashState } from "./const";
+import type { EwtInstallDialog } from "./install-dialog";
+import { connect } from "./connect";
 
 export class InstallButton extends HTMLElement {
   public static isSupported = "serial" in navigator;
@@ -10,12 +12,12 @@ export class InstallButton extends HTMLElement {
     position: relative;
     cursor: pointer;
     font-size: 14px;
-    padding: 8px 28px;
+    font-weight: 500;
+    padding: 10px 24px;
     color: var(--esp-tools-button-text-color, #fff);
     background-color: var(--esp-tools-button-color, #03a9f4);
     border: none;
-    border-radius: 4px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+    border-radius: var(--esp-tools-button-border-radius, 9999px);
   }
   button::before {
     content: " ";
@@ -25,10 +27,7 @@ export class InstallButton extends HTMLElement {
     left: 0;
     right: 0;
     opacity: 0.2;
-    border-radius: 4px;
-  }
-  button:hover {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,.14), 0 1px 7px 0 rgba(0,0,0,.12), 0 3px 1px -1px rgba(0,0,0,.2);
+    border-radius: var(--esp-tools-button-border-radius, 9999px);
   }
   button:hover::before {
     background-color: rgba(255,255,255,.8);
@@ -49,10 +48,6 @@ export class InstallButton extends HTMLElement {
     cursor: unset;
     pointer-events: none;
   }
-  improv-wifi-launch-button {
-    display: block;
-    margin-top: 16px;
-  }
   .hidden {
     display: none;
   }`;
@@ -71,9 +66,7 @@ export class InstallButton extends HTMLElement {
 
   public renderRoot?: ShadowRoot;
 
-  public static preload() {
-    import("./connect");
-  }
+  public overrides: EwtInstallDialog["overrides"];
 
   public connectedCallback() {
     if (this.renderRoot) {
@@ -92,28 +85,23 @@ export class InstallButton extends HTMLElement {
 
     this.toggleAttribute("install-supported", true);
 
-    this.addEventListener("mouseover", InstallButton.preload);
-
     const slot = document.createElement("slot");
 
     slot.addEventListener("click", async (ev) => {
       ev.preventDefault();
-      const mod = await import("./connect");
-      mod.connect(this);
+      connect(this);
     });
 
     slot.name = "activate";
     const button = document.createElement("button");
-    button.innerText = "CONNECT";
+    button.innerText = "Connect";
     slot.append(button);
     if (
       "adoptedStyleSheets" in Document.prototype &&
       "replaceSync" in CSSStyleSheet.prototype
     ) {
       const sheet = new CSSStyleSheet();
-      // @ts-expect-error
       sheet.replaceSync(InstallButton.style);
-      // @ts-expect-error
       this.renderRoot.adoptedStyleSheets = [sheet];
     } else {
       const styleSheet = document.createElement("style");

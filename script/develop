@@ -9,9 +9,8 @@ rm -rf dist
 trap "kill 0" EXIT
 
 # Run tsc once as rollup expects those files
-tsc || true
+npm exec -- tsc || true
 
 npm exec -- serve -p 5001 &
 npm exec -- tsc --watch &
-npm exec -- rollup -c --watch &
-wait
+npm exec -- rollup -c --watch
